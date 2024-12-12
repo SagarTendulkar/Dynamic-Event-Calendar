@@ -1,0 +1,320 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* App Component Styles */
+.app-container {
+  width: 100%;
+  max-width: 900px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  color: #4a90e2;
+  font-weight: bold;
+}
+
+.app-nav-buttons {
+  margin-top: 10px;
+}
+
+.app-nav-buttons button {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.app-nav-buttons button:hover {
+  background-color: #357ab7;
+}
+
+/* Calendar Header */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.calendar-header .nav-button {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-header .nav-button:hover {
+  background-color: #357ab7;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns for each day */
+  grid-gap: 5px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.calendar-grid .day {
+  text-align: center;
+  padding: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.calendar-grid .day:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-grid .weekend {
+  background-color: #f2f2f2;
+}
+
+.calendar-grid .today {
+  background-color: #ffeb3b;
+  font-weight: bold;
+  border-radius: 40%;
+}
+
+.calendar-grid .selected {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.calendar-grid .event-indicator {
+  display: block;
+  font-size: 0.9rem;
+  color: #4a90e2;
+  margin-top: 5px;
+}
+
+
+
+/* global.css or calendar-specific CSS */
+
+/* Weekday initials at the top */
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns for each day of the week */
+  text-align: center;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  padding: 5px 0;
+}
+
+.weekday {
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Add this to your global.css or the specific CSS file for Calendar */
+
+.event-indicator {
+  display: inline-block;
+  position: relative;
+  margin-top: 5px;
+}
+
+.event-dot {
+  width: 5px;
+  height: 5px;
+  margin-top: 2px;
+  background-color: blue;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  bottom: 4px; /* Adjust based on design */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.today {
+  background-color: lightblue;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.selected {
+  background-color: lightgreen;
+}
+
+
+/* Event List Panel */
+.event-list-panel {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-list-panel h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.event-list-panel .event-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.event-list-panel .event-item span {
+  font-size: 1rem;
+}
+
+.event-list-panel .event-item button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.event-list-panel .event-item button:hover {
+  background-color: #c0392b;
+}
+
+/* Modal for adding events */
+.event-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content .modal-input {
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal-content .modal-button {
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px;
+  margin: 2px 0;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content .modal-button:hover {
+  background-color: #357ab7;
+}
+
+.modal-content .modal-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Navbar Component Styles */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4a90e2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.navbar-container .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-container .navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-container .navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.navbar-container .navbar-links li a:hover {
+  text-decoration: underline;
+}
